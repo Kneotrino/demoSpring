@@ -22,3 +22,53 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+
+
+g
+*.gz
+tmp
+dump
+.DS_Store
+.history
+dump.rdb
+bestsign-sdk-logs
+MIYOU_LOG_DIR_IS_UNDEFINED
+
+# Intellij
+**/.idea/
+*.iml
+
+# Eclipse
+.settings
+.cache-main
+.cache-tests
+.cache
+.project
+.classpath
+.scala_dependencies
+bin
+output
+ 
+# SBT
+dist
+project/boot
+project/target
+project/plugins/target
+target
+.target
+flyway-jooq-sbt/project/project
+flyway-jooq-sbt/project/target
+flyway-jooq-sbt/target
+ 
+# Play
+logs
+RUNNING_PID
+
+# Dev
+conf/dev.conf
+
+# Javascript package
+bower_components/*
+
+ec/local.deploy.sh
