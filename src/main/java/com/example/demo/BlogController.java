@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.model.tables.Customers;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
@@ -13,7 +14,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Date;
 
-import com.example.demo.model.tables.*;
 
 
 
