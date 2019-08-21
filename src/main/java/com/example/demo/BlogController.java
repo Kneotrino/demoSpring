@@ -13,6 +13,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Date;
 
+import com.example.demo.model.tables.*;
+
+
+
 @RestController
 public class BlogController {
 
@@ -34,11 +38,7 @@ public class BlogController {
 
             DSLContext pretty = DSL.using(conn, new Settings().withRenderFormatted(true));
 
-            result = pretty.select().from("customers").limit(10).fetch();
-
-            for (Record r : result) {
-                stringBuilder.append(r.formatJSON());
-            }
+            result = pretty.select().from(Customers.CUSTOMERS).limit(10).fetch();
             conn.close();
         } catch (Exception e) {
             // You'll probably want to handle the exceptions in a real app
@@ -55,8 +55,8 @@ public class BlogController {
 //        return "Hello World.java " + new Date().toString();
     }
 
-    @RequestMapping("/Custumer")
-    public String Custumer() {
+    @RequestMapping("/HELLO")
+    public String HELLO() {
 
         return "Hello World.java";
     }

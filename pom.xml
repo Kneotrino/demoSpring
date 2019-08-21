@@ -114,11 +114,6 @@
 				<!-- Specify the plugin configuration.
                      The configuration format is the same as for the standalone code generator -->
 				<configuration>
-					<!-- ( 3 ) connection settings -->
-						<driver>com.mysql.jdbc.Driver</driver>
-						<url>jdbc:mysql://localhost:3306/classicmodels</url>
-						<username>root</username>
-						<password></password>
 
 					<!-- Generator parameters -->
 					<generator>

@@ -4,8 +4,8 @@ import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import org.jooq.codegen.GenerationTool;
-import org.jooq.meta.jaxb.*;
+import org.jooq.util.GenerationTool;
+import org.jooq.util.jaxb.*;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
@@ -34,7 +34,7 @@ public class DemoApplicationTests {
 		System.out.println("Credentials ::"+ credential);
 	}
 
-	@Test
+//	@Test
 	public void generateMysqlJooq()
 	{
 		System.out.println("DemoApplicationTests.generateMysqlJooq");
@@ -81,6 +81,45 @@ public class DemoApplicationTests {
 
 		for(int i = 0; i<list.size(); i++) {
 			System.out.println("Stored string in redis:: "+list.get(i));
+		}
+	}
+
+	@Test
+	public void generateCode() {
+			Configuration configuration = new Configuration()
+					.withJdbc(new Jdbc()
+							.withDriver("com.mysql.jdbc.Driver")
+							.withUrl("jdbc:mysql://localhost:3306/classicmodels")
+							.withUser("root")
+							.withPassword("admin")
+					)
+					.withGenerator(
+							new Generator()
+									.withName("org.jooq.util.JavaGenerator")
+									.withGenerate(new Generate()
+											.withPojos(true)
+											.withImmutablePojos(true)
+											.withInterfaces(true)
+											.withDaos(true)
+											.withSpringAnnotations(true)
+											.withJavaTimeTypes(true)
+									)
+									.withDatabase(new Database()
+											.withName("org.jooq.util.mysql.MySQLDatabase")
+											//.withIncludes(".*")
+											.withExcludes("A")
+											.withDateAsTimestamp(true)
+											.withInputSchema("classicmodels")
+									)
+									.withTarget(new Target()
+											.withPackageName("com.example.demo.model")
+											.withDirectory("/Users/fintopiaindonesia/IdeaProjects/indo-loan/src/main/java/")
+									)
+					);
+		try {
+			GenerationTool.generate(configuration);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
